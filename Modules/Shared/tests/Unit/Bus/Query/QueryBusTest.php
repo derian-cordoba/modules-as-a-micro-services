@@ -1,6 +1,6 @@
 <?php
 
-namespace Query;
+namespace Modules\Shared\Tests\Unit\Bus\Query;
 
 use Modules\Shared\Bus\Query\QueryBus;
 use Modules\Shared\Contracts\Query\QueryBusInterface;

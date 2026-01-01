@@ -1,5 +1,7 @@
 <?php
 
+namespace Modules\Shared\Tests\Unit\Bus\Command;
+
 use Modules\Shared\Bus\Command\CommandBus;
 use Modules\Shared\Contracts\Command\CommandBusInterface;
 use Modules\Shared\Contracts\Command\CommandInterface;
@@ -10,6 +12,7 @@ use Modules\Shared\Tests\Unit\Bus\Command\Fixtures\UpdateBookCommand;
 use Modules\Shared\Tests\Unit\Bus\Command\Fixtures\UpdateBookHandler;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
+use TypeError;
 
 final class CommandBusTest extends TestCase
 {
