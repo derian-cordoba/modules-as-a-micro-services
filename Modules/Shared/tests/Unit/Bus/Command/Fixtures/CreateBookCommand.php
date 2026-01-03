@@ -13,4 +13,16 @@ final readonly class CreateBookCommand implements CommandInterface
     ) {
         //
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function asArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'author' => $this->author,
+            'isbn' => $this->isbn,
+        ];
+    }
 }
