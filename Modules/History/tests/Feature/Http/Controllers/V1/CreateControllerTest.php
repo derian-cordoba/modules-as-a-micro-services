@@ -11,7 +11,7 @@ final class CreateControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    private string $endpoint = '/api/v1/histories';
+    private string $route = 'api.v1.histories.create';
 
     public function test_it_can_create_history_via_api(): void
     {
@@ -23,7 +23,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_CREATED)
@@ -81,7 +81,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_CREATED)
@@ -102,7 +102,7 @@ final class CreateControllerTest extends TestCase
         string $expectedErrorField
     ): void {
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -119,7 +119,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -136,7 +136,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -153,7 +153,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -171,7 +171,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -188,7 +188,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertHeader('Content-Type', 'application/vnd.api+json');
@@ -204,7 +204,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(201)
@@ -221,7 +221,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_CREATED)
@@ -248,7 +248,7 @@ final class CreateControllerTest extends TestCase
         ];
 
         // When
-        $response = $this->postJson($this->endpoint, $payload);
+        $response = $this->postJson(route($this->route), $payload);
 
         // Then
         $response->assertStatus(Response::HTTP_CREATED)
