@@ -126,13 +126,15 @@ final class CreateHistoryUseCaseTest extends TestCase
         $command = new CreateHistoryCommand(
             name: 'Profile Updated',
             type: 'user_action',
-            userId: 5
+            userId: 5,
+            isScanned: false,
         );
 
         $history = new History([
             'name' => 'Profile Updated',
             'type' => 'user_action',
             'user_id' => 5,
+            'is_scanned' => false,
         ]);
 
         $this->commandBus
@@ -165,13 +167,15 @@ final class CreateHistoryUseCaseTest extends TestCase
         $command = new CreateHistoryCommand(
             name: 'Test "Special" Characters & <HTML lang="en">',
             type: 'test',
-            userId: 10
+            userId: 10,
+            isScanned: false,
         );
 
         $history = new History([
             'name' => 'Test "Special" Characters & <HTML lang="en">',
             'type' => 'test',
             'user_id' => 10,
+            'is_scanned' => false,
         ]);
 
         $this->commandBus
@@ -199,6 +203,7 @@ final class CreateHistoryUseCaseTest extends TestCase
                     'name' => 'User Logged In',
                     'type' => 'authentication',
                     'user_id' => 1,
+                    'is_scanned' => false,
                     'metadata' => null,
                 ]),
             ],
@@ -216,6 +221,7 @@ final class CreateHistoryUseCaseTest extends TestCase
                     'name' => 'Order Created',
                     'type' => 'order',
                     'user_id' => 2,
+                    'is_scanned' => false,
                     'metadata' => [
                         'order_id' => 'ORD-123',
                         'amount' => 99.99,
@@ -241,6 +247,7 @@ final class CreateHistoryUseCaseTest extends TestCase
                     'name' => 'Payment Processed',
                     'type' => 'payment',
                     'user_id' => 3,
+                    'is_scanned' => false,
                     'metadata' => [
                         'payment_method' => 'credit_card',
                         'amount' => 149.99,

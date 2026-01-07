@@ -16,6 +16,7 @@ final class CreateHistoryRequest extends FormRequest implements AsCommandInterfa
         return [
             'name' => ['required', 'string', 'max:255'],
             'type' => ['required', 'string', 'max:100'],
+            'is_scanned' => ['sometimes', 'boolean'],
             'user_id' => ['required', 'integer'],
             'metadata' => ['nullable', 'array'],
         ];
@@ -27,9 +28,10 @@ final class CreateHistoryRequest extends FormRequest implements AsCommandInterfa
     public function asCommand(): CreateHistoryCommand
     {
         return new CreateHistoryCommand(
-            name: $this->input(key: 'name'),
-            type: $this->input(key: 'type'),
-            userId: $this->input(key: 'user_id'),
+            name: $this->string(key: 'name'),
+            type: $this->string(key: 'type'),
+            userId: $this->integer(key: 'user_id'),
+            isScanned: $this->boolean(key: 'is_scanned'),
             metadata: $this->input(key: 'metadata'),
         );
     }

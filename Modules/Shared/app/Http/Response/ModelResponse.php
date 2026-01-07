@@ -43,4 +43,13 @@ final readonly class ModelResponse implements Responsable
             meta: $meta
         );
     }
+
+    public static function deleted(array $meta = []): self
+    {
+        return new self(
+            data: new JsonResource(resource: null),
+            status: Response::HTTP_NO_CONTENT,
+            meta: ['message' => 'Resource deleted successfully', ...$meta]
+        );
+    }
 }

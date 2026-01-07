@@ -17,6 +17,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property-read string $slug
  * @property string $name
  * @property string $type
+ * @property bool $is_scanned
  * @property int $user_id
  * @property array|null $metadata
  * @property-read Carbon|null $created_at
@@ -33,6 +34,7 @@ final class History extends Model
     protected $fillable = [
         'name',
         'type',
+        'is_scanned',
         'user_id',
         'metadata',
     ];

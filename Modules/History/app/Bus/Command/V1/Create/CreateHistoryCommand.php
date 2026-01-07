@@ -10,6 +10,7 @@ final readonly class CreateHistoryCommand implements CommandInterface
         public string $name,
         public string $type,
         public int $userId,
+        public bool $isScanned = false,
         public ?array $metadata = null,
     ) {
         //
@@ -24,6 +25,7 @@ final readonly class CreateHistoryCommand implements CommandInterface
             'name' => $this->name,
             'type' => $this->type,
             'user_id' => $this->userId,
+            'is_scanned' => $this->isScanned,
             'metadata' => $this->metadata,
         ];
     }

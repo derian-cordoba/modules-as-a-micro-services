@@ -23,6 +23,7 @@ final class HistoryFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'type' => $this->faker->word(),
+            'is_scanned' => $this->faker->boolean(),
             'user_id' => $this->faker->unique()->numberBetween(1, 100),
             'metadata' => null,
         ];

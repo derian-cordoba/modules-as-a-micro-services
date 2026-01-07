@@ -17,9 +17,9 @@ final class HistoryResource extends JsonResource
             'type' => 'histories',
             'id' => $this->resource->slug,
             'attributes' => [
-                'id' => $this->resource->slug,
                 'name' => $this->resource->name,
                 'type' => $this->resource->type,
+                'is_scanned' => $this->resource->is_scanned,
                 'user_id' => $this->resource->user_id,
                 'metadata' => $this->resource->metadata,
                 'created_at' => $this->resource->created_at,

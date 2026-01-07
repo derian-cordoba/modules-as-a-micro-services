@@ -30,6 +30,9 @@ final class CreateHistoryRequestTest extends TestCase
         $this->assertContains('required', $rules['user_id']);
         $this->assertContains('integer', $rules['user_id']);
 
+        $this->assertContains('sometimes', $rules['is_scanned']);
+        $this->assertContains('boolean', $rules['is_scanned']);
+
         $this->assertContains('nullable', $rules['metadata']);
         $this->assertContains('array', $rules['metadata']);
     }
@@ -41,6 +44,7 @@ final class CreateHistoryRequestTest extends TestCase
             'name' => 'Test History',
             'type' => 'test',
             'user_id' => 1,
+            'is_scanned' => true,
             'metadata' => ['key' => 'value'],
         ]);
 
@@ -52,6 +56,7 @@ final class CreateHistoryRequestTest extends TestCase
         $this->assertEquals('Test History', $command->name);
         $this->assertEquals('test', $command->type);
         $this->assertEquals(1, $command->userId);
+        $this->assertTrue($command->isScanned);
         $this->assertEquals(['key' => 'value'], $command->metadata);
     }
 

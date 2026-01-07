@@ -20,6 +20,7 @@ final class CreateControllerTest extends TestCase
             'name' => 'User Logged In',
             'type' => 'authentication',
             'user_id' => 1,
+            'is_scanned' => true,
         ];
 
         // When
@@ -50,6 +51,7 @@ final class CreateControllerTest extends TestCase
                         'name' => 'User Logged In',
                         'type' => 'authentication',
                         'user_id' => 1,
+                        'is_scanned' => true,
                     ],
                 ],
                 'meta' => [
@@ -61,6 +63,7 @@ final class CreateControllerTest extends TestCase
             'name' => 'User Logged In',
             'type' => 'authentication',
             'user_id' => 1,
+            'is_scanned' => true,
         ]);
     }
 

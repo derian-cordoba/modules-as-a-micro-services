@@ -20,10 +20,14 @@ return new class extends Migration
         Schema::create('histories', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')
+                ->unique()
+                ->index();
+            $table->boolean('is_scanned');
             $table->string('type')->index();
             $table->unsignedBigInteger('user_id')->index();
             $table->json('metadata')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

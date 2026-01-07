@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Modules\History\Bus\Command\V1\Create\CreateHistoryCommand;
+use Modules\History\Bus\Command\V1\Delete\DeleteHistoryCommand;
 use Modules\History\Bus\Handler\V1\Create\CreateHistoryHandler;
+use Modules\History\Bus\Handler\V1\Delete\DeleteHistoryHandler;
 use Modules\Shared\Contracts\Command\CommandBusInterface;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
@@ -159,6 +161,11 @@ final class HistoryServiceProvider extends ServiceProvider
             $commandBus->register(
                 commandClass: CreateHistoryCommand::class,
                 handlerClass: CreateHistoryHandler::class,
+            );
+
+            $commandBus->register(
+                commandClass: DeleteHistoryCommand::class,
+                handlerClass: DeleteHistoryHandler::class,
             );
         } catch (BindingResolutionException $e) {
             Log::error(message: "Failed to register History module command/query bindings: {$e->getMessage()}");
