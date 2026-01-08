@@ -45,6 +45,7 @@ final class History extends Model
     public function casts(): array
     {
         return [
+            'is_scanned' => 'boolean',
             'metadata' => 'json',
         ];
     }

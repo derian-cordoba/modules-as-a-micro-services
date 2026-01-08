@@ -10,7 +10,10 @@ use Modules\History\Bus\Command\V1\Create\CreateHistoryCommand;
 use Modules\History\Bus\Command\V1\Delete\DeleteHistoryCommand;
 use Modules\History\Bus\Handler\V1\Create\CreateHistoryHandler;
 use Modules\History\Bus\Handler\V1\Delete\DeleteHistoryHandler;
+use Modules\History\Bus\Handler\V1\Fetch\FetchHistoriesHandler;
+use Modules\History\Bus\Query\V1\Fetch\FetchHistoriesQuery;
 use Modules\Shared\Contracts\Command\CommandBusInterface;
+use Modules\Shared\Contracts\Query\QueryBusInterface;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -157,6 +160,7 @@ final class HistoryServiceProvider extends ServiceProvider
     {
         try {
             $commandBus = $this->app->make(CommandBusInterface::class);
+            $queryBus = $this->app->make(QueryBusInterface::class);
 
             $commandBus->register(
                 commandClass: CreateHistoryCommand::class,
@@ -166,6 +170,11 @@ final class HistoryServiceProvider extends ServiceProvider
             $commandBus->register(
                 commandClass: DeleteHistoryCommand::class,
                 handlerClass: DeleteHistoryHandler::class,
+            );
+
+            $queryBus->register(
+                queryClass: FetchHistoriesQuery::class,
+                handlerClass: FetchHistoriesHandler::class,
             );
         } catch (BindingResolutionException $e) {
             Log::error(message: "Failed to register History module command/query bindings: {$e->getMessage()}");
