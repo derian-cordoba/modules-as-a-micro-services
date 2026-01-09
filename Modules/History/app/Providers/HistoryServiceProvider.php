@@ -4,6 +4,7 @@ namespace Modules\History\Providers;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Modules\History\Bus\Command\V1\Create\CreateHistoryCommand;
@@ -14,6 +15,7 @@ use Modules\History\Bus\Handler\V1\Fetch\FetchHistoriesHandler;
 use Modules\History\Bus\Query\V1\Fetch\FetchHistoriesQuery;
 use Modules\Shared\Contracts\Command\CommandBusInterface;
 use Modules\Shared\Contracts\Query\QueryBusInterface;
+use Modules\Shared\Enums\DatabaseIdentifier;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -37,6 +39,9 @@ final class HistoryServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+
+        // Configure the custom database connection for the History module
+        DB::setDefaultConnection(DatabaseIdentifier::HISTORY->value);
     }
 
     /**
